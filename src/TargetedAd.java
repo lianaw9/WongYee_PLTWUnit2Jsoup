@@ -52,17 +52,14 @@ public class TargetedAd {
       //get username
       int usernameEnd = dataLine.indexOf(",");
       String username = dataLine.substring(0, usernameEnd);
-      while (username.indexOf(" ") != -1) {
-        int space = username.indexOf(" ");
-        username = username.substring(0, space) + "-" + username.substring(space+1);
-      }
+      
       
       //check if review includes a target word
       String targetWord = data.getNextTargetWord();
       while (!targetWord.equals("NONE")) {
         if (review.indexOf(targetWord) != -1) {
           //if the target word is included in the review, add name to list
-          allUsernames += username + " ";
+          allUsernames += username + ", ";
           System.out.println("CUSTOMER FOUND: " + username);
           break;
         }

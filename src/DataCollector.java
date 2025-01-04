@@ -117,9 +117,12 @@ public class DataCollector
       FileWriter fw = new FileWriter(filename);
       // Strin method split splits a string based on the provided token
       // and returns an array of individual substrings
-      for (String un : usernames.split(" "))
+      for (String un : usernames.split(",")) //MODIFICATION seperate based on commas
       {
-          fw.write("@" + un + " " + advertisement +"\n");
+          un = un.strip(); //MODIFICATION
+          if (!un.equals("")) { //MODIFICATION ignore the last un since it will be a space now
+            fw.write("@" + un + " " + advertisement +"\n");
+          }
       }
       fw.close();
     }
