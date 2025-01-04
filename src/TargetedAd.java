@@ -69,7 +69,8 @@ public class TargetedAd {
       dataLine = data.getNextPost();
     }
     System.out.println(allUsernames);
-     
+    
+    data.prepareAdvertisement("testAd.txt", allUsernames, "You should buy my epic blanket which will keepyou very warm. It is very soft but will make you hard");
   }
 
 }
