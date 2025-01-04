@@ -33,11 +33,42 @@ public class TargetedAd {
 
 
     /* your code here */
+    
     DataCollector data = new DataCollector();
     data.setData("socialMediaPostsSmall.txt", "targetWords.txt");
-    System.out.println(data.getNextPost());
-    System.out.println(data.getNextPost());
-    System.out.println(data.getNextTargetWord());
+
+    String allUsernames = "";
+    String dataLine = data.getNextPost(); //csv file heading
+    dataLine = data.getNextPost();
+    while (!dataLine.equals("NONE")) {
+      //System.out.println(dataLine);
+
+      //get review 
+      int reviewStart = dataLine.indexOf("\"");
+      int reviewEnd = dataLine.indexOf("\"", reviewStart+1);
+      String review = dataLine.substring(reviewStart+1, reviewEnd);
+      System.out.println(review);
+
+      //get username
+      int usernameEnd = dataLine.indexOf(",");
+      String username = "\"" + dataLine.substring(0, usernameEnd) + "\"";
+      
+      //check if review includes a target word
+      String targetWord = data.getNextTargetWord();
+      while (!targetWord.equals("NONE")) {
+        if (review.indexOf(targetWord) != -1) {
+          //if the target word is included in the review, add name to list
+          allUsernames += username + " ";
+          System.out.println("CUSTOMER FOUND!!");
+          break;
+        }
+        targetWord = data.getNextTargetWord();
+      }
+
+      //get next post
+      dataLine = data.getNextPost();
+    }
+    System.out.println(allUsernames);
      
   }
 
