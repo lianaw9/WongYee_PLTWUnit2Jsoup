@@ -9,3 +9,4 @@ Crystal, "I love the scarf. It is exactly what I wanted. The colors are perfect.
 Meesch, "Super cute. And long . Just like picture", 5, December 12 2024
 log67, "I looked at several stores/sites for a cotton scarf. This one is perfect. So soft & the length is great.", 5, December 26 2024
 Matt B., "This scarf is super cute. It is great material, and it is very soft. Worth the money and the colors are great.", 5, December 26 2024
+COOL ROCKRUFF, "This soft scarf has changed my life and I am now married to it", 5, December 85 2022

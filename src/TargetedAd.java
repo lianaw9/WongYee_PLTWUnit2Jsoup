@@ -35,7 +35,7 @@ public class TargetedAd {
     /* your code here */
     
     DataCollector data = new DataCollector();
-    data.setData("socialMediaPostsSmall.txt", "targetWords.txt");
+    data.setData("socialMediaPosts.txt", "targetWords.txt");
 
     String allUsernames = "";
     String dataLine = data.getNextPost(); //csv file heading
@@ -47,11 +47,15 @@ public class TargetedAd {
       int reviewStart = dataLine.indexOf("\"");
       int reviewEnd = dataLine.indexOf("\"", reviewStart+1);
       String review = dataLine.substring(reviewStart+1, reviewEnd);
-      System.out.println(review);
+      //System.out.println(review);
 
       //get username
       int usernameEnd = dataLine.indexOf(",");
-      String username = "\"" + dataLine.substring(0, usernameEnd) + "\"";
+      String username = dataLine.substring(0, usernameEnd);
+      while (username.indexOf(" ") != -1) {
+        int space = username.indexOf(" ");
+        username = username.substring(0, space) + "-" + username.substring(space+1);
+      }
       
       //check if review includes a target word
       String targetWord = data.getNextTargetWord();
@@ -59,7 +63,7 @@ public class TargetedAd {
         if (review.indexOf(targetWord) != -1) {
           //if the target word is included in the review, add name to list
           allUsernames += username + " ";
-          System.out.println("CUSTOMER FOUND!!");
+          System.out.println("CUSTOMER FOUND: " + username);
           break;
         }
         targetWord = data.getNextTargetWord();
@@ -68,9 +72,9 @@ public class TargetedAd {
       //get next post
       dataLine = data.getNextPost();
     }
-    System.out.println(allUsernames);
+    //System.out.println(allUsernames);
     
-    data.prepareAdvertisement("testAd.txt", allUsernames, "You should buy my epic blanket which will keepyou very warm. It is very soft but will make you hard");
+    data.prepareAdvertisement("BlanketAd.txt", allUsernames, "So It sounds like you like soft and warm items such as this scarf which you bought........You should buy my epic blanket which will keep you very warm.");
   }
 
 }
