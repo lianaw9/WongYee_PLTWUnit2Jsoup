@@ -41,7 +41,7 @@ public class App {
                     int comma = dateString.indexOf(",");
                     dateString = dateString.substring(cut+3, comma) + dateString.substring(comma+1);
     
-                    smp.write(profileNameString + ", " + reviewString + ", " + starRatingString + ", " + dateString);
+                    smp.write(profileNameString + ", \"" + reviewString + "\", " + starRatingString + ", " + dateString); 
                 }
             } else {
                 System.out.println("An error has occured");
