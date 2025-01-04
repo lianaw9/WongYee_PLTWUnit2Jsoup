@@ -2,6 +2,8 @@ import java.io.File;  // Import the File class
 import java.io.FileWriter;
 import java.io.IOException;  // Import the IOException class to handle errors
 
+
+//helps CSVMaker create the new file
 public class FileManager {
     private String fileName;
     

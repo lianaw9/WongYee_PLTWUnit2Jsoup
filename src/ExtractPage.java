@@ -5,13 +5,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class App {
-    public static void main(String[] args) {
-        String filePath = "C:\\Users\\liana\\Downloads\\SellMyPetFood\\src\\amazonPage.txt"; // Replace with the file path
+//Prepares the socialMediaPosts.txt file using JSoup
+public class ExtractPage {
+    String filePath; 
+    String fileName;
 
+    public ExtractPage() {
+        filePath = "C:\\Users\\liana\\Downloads\\SellMyPetFood\\src\\amazonPage.txt";
+        fileName = "socialMediaPosts.txt";
+    }
+
+    public ExtractPage(String fp, String fn) {
+        filePath = fp;
+        fileName = fn;
+    }
+    public void prepareCSVfile() {
         try {
             //Prepare socialMediaPosts.txt
-            FileManager smp = new FileManager("socialMediaPosts.txt");
+            FileManager smp = new FileManager(fileName);
             smp.createFile();
             smp.clearFile();
             smp.write("Reviewer Name, Review, Stars, Date");
