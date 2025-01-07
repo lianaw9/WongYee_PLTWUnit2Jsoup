@@ -11,7 +11,7 @@ public class ExtractPage {
     String fileName;
 
     public ExtractPage() {
-        filePath = "C:\\Users\\liana\\Downloads\\SellMyPetFood\\src\\amazonPage.txt";
+        filePath = "src\\amazonPage.txt";
         fileName = "socialMediaPosts.txt";
     }
 
