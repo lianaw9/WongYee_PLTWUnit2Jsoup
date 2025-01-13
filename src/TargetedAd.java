@@ -5,13 +5,15 @@ public class TargetedAd {
 
   public static void main(String[] args)
   {
-    /* your code here */
     //CREATE CSV FILE USING JSOUP (ExtractPage.java)
-    ExtractPage amazonCSV = new ExtractPage();
-    amazonCSV.prepareCSVfile();
-    
+    //ExtractPage amazonCSV = new ExtractPage();
+    //amazonCSV.prepareCSVfile();
+
+
+    //Preparing targeted advertisements
     DataCollector data = new DataCollector();
-    data.setData("socialMediaPosts.txt", "targetWords.txt");
+    String targetProduct = "blanket"; //CHANGE THIS
+    data.setData("socialMediaPosts.txt", targetProduct + "TargetWords.txt");
 
     System.out.println("Searching for customers...");
     
@@ -37,8 +39,12 @@ public class TargetedAd {
       while (!targetWord.equals("NONE")) {
         if (review.indexOf(targetWord) != -1) {
           //if the target word is included in the review, add name to list
-          allUsernames += username + ", ";
-          System.out.println("CUSTOMER FOUND: " + username);
+
+          //make sure username is not already included in allUsernames
+          if (allUsernames.indexOf(username + ",") == -1) {
+            allUsernames += username + ", ";
+            System.out.println("CUSTOMER FOUND: " + username);
+          }
           break;
         }
         targetWord = data.getNextTargetWord();
@@ -49,7 +55,12 @@ public class TargetedAd {
     }
     //System.out.println(allUsernames);
     
-    data.prepareAdvertisement("BlanketAd.txt", allUsernames, "So It sounds like you like soft and warm items such as this scarf which you bought........You should buy my epic blanket which will keep you very warm.");
+
+    //PREPARE ADVERTISEMENT METHOD
+
+    ExtractPage advertisement = new ExtractPage(targetProduct + "Ad.txt");
+    String advertisementStr = advertisement.getFileContent();
+    data.prepareAdvertisement(targetProduct + "TargetMarket.txt", allUsernames, advertisementStr);
   }
 
 }

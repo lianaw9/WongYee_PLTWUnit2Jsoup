@@ -19,6 +19,11 @@ public class ExtractPage {
         filePath = fp;
         fileName = fn;
     }
+
+    public ExtractPage(String fp) {
+        filePath = fp;
+    }
+    
     public void prepareCSVfile() {
         try {
             //Prepare socialMediaPosts.txt
@@ -65,6 +70,16 @@ public class ExtractPage {
         } catch (IOException e) {
             e.printStackTrace(); // Handle exceptions
         }
+    }
+
+    public String getFileContent() {
+        try {
+            String fileContent = new String(Files.readAllBytes(Paths.get(filePath)));
+            return fileContent;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Error";
     }
 }
    
