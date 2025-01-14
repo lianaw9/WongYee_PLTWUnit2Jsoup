@@ -1,6 +1,0 @@
-daughter
-son 
-family 
-mom 
-dad 
-warm 

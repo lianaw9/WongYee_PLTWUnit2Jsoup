@@ -1,5 +1,0 @@
-soft
-cozy 
-comfy 
-cold 
-warm 
