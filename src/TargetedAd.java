@@ -6,8 +6,8 @@ public class TargetedAd {
   public static void main(String[] args)
   {
     //CREATE CSV FILE USING JSOUP (ExtractPage.java)
-    //ExtractPage amazonCSV = new ExtractPage();
-    //amazonCSV.prepareCSVfile();
+    ExtractPage amazonCSV = new ExtractPage();
+    amazonCSV.prepareCSVfile();
 
 
     //Preparing targeted advertisements
