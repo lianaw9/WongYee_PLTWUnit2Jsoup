@@ -8,8 +8,7 @@ pretty 2
 comfortable 2
 color 2
 colorful 2
-daughter 3
-son 3
-family 3
-mom 3
-dad 3
+expensive 3
+cheap 3
+money 3
+price 3
